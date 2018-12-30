@@ -14,7 +14,7 @@
 <body>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    El Gitteo Mark 3, the requesting electric boogaloo
+    El edit para el gerardo
 </button>
 
 <!-- Modal -->
