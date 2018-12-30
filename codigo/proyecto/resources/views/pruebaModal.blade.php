@@ -14,8 +14,7 @@
 <body>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    El boton del cacerio yeah probando yeah
-jhfghj
+    El Gitteo
 </button>
 
 <!-- Modal -->
