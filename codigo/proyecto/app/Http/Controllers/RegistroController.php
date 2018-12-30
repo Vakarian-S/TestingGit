@@ -85,4 +85,21 @@ class RegistroController extends Controller
     {
         //
     }
+
+    public function menu()
+    {
+        return view('registros');
+    }
+    public function registroConvenio()
+    {
+        return view('registroConvenioColab');
+    }
+    public function registroExtension()
+    {
+        return view('registroExtension');
+    }
+    public function registroASP()
+    {
+        return view('registroASP');
+    }
 }

@@ -17,8 +17,6 @@ class CreateActividadExtensionsTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('localizacion');
-            $table->string('organizador');
-            $table->string('orador');
             $table->date('fecha');
             $table->unsignedInteger(('cant_asistentes'));
             $table->string('evidencia');

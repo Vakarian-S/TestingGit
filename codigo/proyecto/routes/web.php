@@ -12,7 +12,7 @@
 */
 Route::resource('registro', 'RegistroController');
 Route::get('/',function () {
-    return view('welcome_boot');
+    return view('welcome');
 });
 Route::get('/menu', function () {
     return 'Hola mundo';
@@ -31,6 +31,10 @@ Route::get('/usuarios',function() {
     return 'Usuarios';
 });
 
+Route::get('test',function(){
+   return view('pruebaModal');
+});
+
 Route::get('/usuarios/{id}',function($id) {
     return 'Usuario: {$id}';
 })->where('id', '[0-9]+');
@@ -38,7 +42,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/registroConvenioColab', 'PruebaController@registroConvenio')->name('registroConvenio');
+Route::get('/registros', 'RegistroController@menu')->name('menuRegistros');
 
-Route::get('/registrarConvenioColab', [ 'uses' => 'PruebaController@registrarConvenio'])->name('registrarConvenio');
+Route::get('/registroConvenio', [ 'uses' => 'ConvenioController@create'])->name('registroConvenio');
+Route::post('/registroConvenio', [ 'uses' => 'ConvenioController@store']);
 
+Route::get('/registroExtension', 'ActividadExtensionController@create')->name('registroExtension');
+Route::post('/registroExtension', 'ActividadExtensionController@store');
+
+Route::get('/registroASP', 'ActividadASPController@create')->name('registroASP');
+Route::post('/registroASP', 'ActividadASPController@store');

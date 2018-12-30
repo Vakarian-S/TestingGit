@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\ActividadExtension;
+use App\ActividadExtensionOrador;
+use App\ActividadExtensionOrganizador;
 use Illuminate\Http\Request;
 
 class ActividadExtensionController extends Controller
@@ -24,7 +26,7 @@ class ActividadExtensionController extends Controller
      */
     public function create()
     {
-        //
+        return view('registroExtension');//
     }
 
     /**
@@ -35,6 +37,34 @@ class ActividadExtensionController extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->all();
+        $oradores = $data['oradores'];
+        $organizadores = $data['organizadores'];
+
+        ActividadExtension::create([
+        'nombre' => $data['nombre'],
+        'localizacion' => $data['localizacion'],
+        'fecha' => $data['fecha'],
+        'cant_asistentes' => $data['cant_asistentes'],
+        'evidencia' => $data['evidencia'],
+        'convenio_id' => $data['convenio_id'],
+        ]);
+
+        $idActividad = ActividadExtension::latest()->first()->id;
+        foreach ($oradores as $orador){
+            ActividadExtensionOrador::create([
+                'actividad_extension_id' => $idActividad,
+                'orador' => $orador,
+            ]);
+        }
+        foreach ($organizadores as $organizador){
+            ActividadExtensionOrganizador::create([
+                'actividad_extension_id' => $idActividad,
+                'organizador' => $organizador,
+            ]);
+        }
+
+        return view('registros');
         //
     }
 
@@ -82,4 +112,5 @@ class ActividadExtensionController extends Controller
     {
         //
     }
+
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ActividadExtension extends Model
 {
     protected $fillable = [
-        'nombre', 'localizacion', "organizador", "orador", "fecha", "cant_asistentes", "evidencia"
+        'nombre', 'localizacion',"fecha", "cant_asistentes", "evidencia"
         , "convenio_id"
     ]; //
 

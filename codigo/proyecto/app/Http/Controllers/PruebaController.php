@@ -27,10 +27,7 @@ class PruebaController extends Controller
     public function registrarConvenio(Request $request)
     {
 //        dd($request->nombreConvenio);
-        $convenio = new Convenio();
-        $convenio->evidencia = $request->nombreConvenio;
 
-        $convenio->save();
 
         //guardar en base de datos
 

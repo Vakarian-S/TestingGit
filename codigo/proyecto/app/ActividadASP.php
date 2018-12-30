@@ -11,4 +11,7 @@ class ActividadASP extends Model
         'nombre', 'asignatura', "profesor", "cant_estudiantes", "periodo","evidencia"
     ]; //
     //
+    protected function actividadesASPOrganizacion(){
+        $this->hasMany('App\ActividadASP_Organizacion');
+    }
 }
