@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ActividadExtension;
 use App\ActividadExtensionOrador;
 use App\ActividadExtensionOrganizador;
+use App\Convenio;
 use Illuminate\Http\Request;
 
 class ActividadExtensionController extends Controller
@@ -26,7 +27,8 @@ class ActividadExtensionController extends Controller
      */
     public function create()
     {
-        return view('registroExtension');//
+        $convenios = Convenio::all();
+        return view('registroExtension',['convenios'=> $convenios]);//
     }
 
     /**
@@ -38,8 +40,29 @@ class ActividadExtensionController extends Controller
     public function store(Request $request)
     {
         $data = request()->all();
+        $request->validate([
+            'nombre' => 'required|alpha',
+            'localizacion' => 'required',
+            'fecha' => 'required',
+            'cant_asistentes' => 'required',
+            'evidencia' => 'required',
+            'convenio_id' => 'nullable',
+            'oradores.*' => 'bail|required|alpha',
+            'organizadores.*' => 'bail|required|alpha'
+
+        ]);
+
         $oradores = $data['oradores'];
         $organizadores = $data['organizadores'];
+        foreach ($oradores as $key=>$value){
+
+            $request->validate([
+
+            ]);
+        }
+        foreach ($organizadores as $organizador){
+
+        }
 
         ActividadExtension::create([
         'nombre' => $data['nombre'],
@@ -67,6 +90,8 @@ class ActividadExtensionController extends Controller
         return view('registros');
         //
     }
+
+
 
     /**
      * Display the specified resource.
